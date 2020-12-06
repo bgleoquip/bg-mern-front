@@ -13,6 +13,7 @@ class TodoForm extends React.Component {
   };
 
   handleAddTodo = () => {
+    if(this.state.input === "") return;
     this.props.addTodo({
       title: this.state.input,
       complete:false

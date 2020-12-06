@@ -1,7 +1,7 @@
 import { ADD_AN_ITEM, REMOVE_AN_ITEM, COMPLETE_AN_ITEM, GET_ITEMS } from "./actionType";
 import axios from "axios";
 
-var url = "http://localhost:5000/posts" //"https://bg-mern-back.herokuapp.com";
+var url = "https://bg-mern-back.herokuapp.com/posts" //"https://bg-mern-back.herokuapp.com";
 export const addTodo = content => {
 	return dispatch => {
 		axios
@@ -10,7 +10,9 @@ export const addTodo = content => {
 				type: ADD_AN_ITEM,
 				payload: response.data
 			});
-		})	
+		}).catch(error=>{
+			console.log(error)
+		})
 	}
 };
 
