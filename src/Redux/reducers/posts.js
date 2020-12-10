@@ -25,8 +25,13 @@ export default function(state = initialState, action) {
         }
         case COMPLETE_AN_ITEM: {
             const posts = state.selectedItems;
-            const index = posts.findIndex(post => post._id === action.payload._id)
-            posts[index].complete = true ;
+            // const index = posts.findIndex(post => post._id === action.payload._id)
+            // posts[index].complete = true ;
+            const newPosts = posts.map(post => {
+                if(post._id  === action.payload._id) {
+                    return {...post, complete:true}
+                }
+            })
             return  {
                 ...state,
                 selectedItems:[...posts]
