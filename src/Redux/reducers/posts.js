@@ -24,17 +24,17 @@ export default function(state = initialState, action) {
                 ]}
         }
         case COMPLETE_AN_ITEM: {
-            const posts = state.selectedItems;
+            const posts = [...state.selectedItems];
             // const index = posts.findIndex(post => post._id === action.payload._id)
             // posts[index].complete = true ;
             const newPosts = posts.map(post => {
                 if(post._id  === action.payload._id) {
                     return {...post, complete:true}
-                }
+                } else return {...post}
             })
             return  {
                 ...state,
-                selectedItems:[...posts]
+                selectedItems:newPosts
             }
         }
         case GET_ITEMS: {
